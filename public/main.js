@@ -52,7 +52,8 @@ function handleBpmButtonClick(e) {
     //// Send our data to the websocket
     var msgdata = {
         action:"bpm",
-        bpm: bpm
+        bpm: bpm,
+        bpm_id: BPM_ID
     };
     sock.send(JSON.stringify(msgdata));
 
@@ -124,7 +125,8 @@ function loadMonitor() {
         //// We'll package an initial message with the info they entered
         var msgdata = {
             action:"init",
-            message: "Hello World!"
+            message: "Hello World!",
+            bpm_id: BPM_ID
         };
         // // ... and send that info to the server to initialize things (see server.js notes)
         e.target.send(JSON.stringify(msgdata));
@@ -151,11 +153,9 @@ function loadMonitor() {
 
 var bpmApp;
 $(window).on("load", function() {
-    console.log("load 1");
     if (BPM_ID!="") {
         loadMonitor();
     }
-    console.log("load 2");
 });
 
 

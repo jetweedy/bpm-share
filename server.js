@@ -114,29 +114,23 @@ wss.on('connection', (ws) => {
 	ws.on('close', () => console.log('Client disconnected'));
 	ws.on('message', message => {
 		let mdata = JSON.parse(message);
-		/*
-		if (mdata.action=="chatmsg") {
-		    wss.clients.forEach((ws) => {
-				if (ws._data.room == mdata.room) {
-			        let m = {action:"chatmsg", content: {
-						message: mdata.message, username: mdata.username, timestamp: (new Date()).toTimeString()
-					}};
-				//	console.log(m);
-			        ws.send(JSON.stringify(m));
-				}
-		    });
-		}
-		*/
 		if (mdata.action=="init") {
 			console.log(mdata.message);
-            var m = {action:"log", content:"Welcome!"};
+			ws._data.bpm_id = mdata.bpm_id;
+            var m = {action:"log", content:"Welcome!", bpm_id: mdata.bpm_id};
 			ws.send(JSON.stringify(m));
 		}
 		if (mdata.action=="bpm") {
-			console.log("bpm received from browser: ", mdata.bpm);
+			console.log("bpm received from browser: ", mdata.bpm, ws._data.bpm_id);
             var m = {action:"bpm", bpm:mdata.bpm};
-//            var m = {action:"log", content:"bpm received from websocket: " + mdata.bpm};
-			ws.send(JSON.stringify(m));
+//			ws.send(JSON.stringify(m));
+		    wss.clients.forEach((ws) => {
+				if (ws._data.bpm_id == mdata.bpm_id) {
+			        ws.send(JSON.stringify(m));
+				}
+		    });
+
+
 		}
 	})
 })
