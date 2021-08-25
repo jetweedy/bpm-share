@@ -1,0 +1,23 @@
+
+
+/*
+There's nothing wildly interesting about this CSS, 
+and this isn't a CSS tutorial, 
+so you won't find much of interest in this file.
+*/
+
+input, button, body {
+    font-size:1.2em;
+    font-family:arial;
+}
+#bpm-button {
+    border: 2px solid black;
+    background-color: lightgray;
+    padding: 2em;
+    font-size: 2em;
+    text-align: center;
+}
+#bpm-result {
+    text-align: center;
+    font-size: 2em;
+}

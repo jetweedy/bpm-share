@@ -1,0 +1,3 @@
+
+___ Add a URL path parameter for an ID
+___ Look back at NonnyChat to see how it restricts which WS connections get the message for the new BPM based on that ID
