@@ -1,0 +1,25 @@
+
+<html>
+    <head>
+        <!--
+        Let's include the Vue.js framework. 
+        We'll use this just a little bit, to display the chat log.
+        Just a nice way to get our toes wet without diving into a Vue.js tutorial, too.
+        -->
+        <script>
+            var BPM_ID = "<%=bpm_id%>";
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>        
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="/public/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="/public/main.css" />
+    </head>
+    <body>
+        <div id="bpm-app">
+            <div id="bpm-result">{{bpm}}</div>
+            <div id="bpm-button">
+                Tap Repeatedly!
+            </div>
+        </div>
+    </body>
+</html>

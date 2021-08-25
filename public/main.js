@@ -97,8 +97,8 @@ function logout(opts) {
 
 
 
-var bpmApp;
-$(window).on("load", () => {
+
+function loadMonitor() {
 
     //// Initialize a Vue component for the chatlog
     bpmApp = new Vue({
@@ -120,7 +120,7 @@ $(window).on("load", () => {
     };
     //// Listen for when the socket is open and ready to receive/send events
     sock.onopen = (e) => {
-        console.clear();
+//        console.clear();
         //// We'll package an initial message with the info they entered
         var msgdata = {
             action:"init",
@@ -145,7 +145,18 @@ $(window).on("load", () => {
 
 
 
-})
+}
+
+
+
+var bpmApp;
+$(window).on("load", function() {
+    console.log("load 1");
+    if (BPM_ID!="") {
+        loadMonitor();
+    }
+    console.log("load 2");
+});
 
 
 

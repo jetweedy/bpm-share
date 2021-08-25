@@ -33,7 +33,13 @@ const server = express()
 	.get('/', function(req, res){
 		//// We'll just be serving up the index.html that's in the 'public' folder
 //		res.sendFile(path.join(__dirname, 'public/index.html'));
-		res.render('index', {chatroom:'', username:''});
+		res.render('index', {});
+	})
+	//// Handle chat/room/user path
+	.get('/monitor/:id', function(req, res) {
+		res.render('monitor', {
+			bpm_id: req.params.id.trim()
+		})
 	})
 /*
 	.get('/test', function(req, res) {
